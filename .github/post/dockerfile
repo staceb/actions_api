@@ -1,1 +1,16 @@
+FROM debian:9.5-slim
 
+LABEL "com.github.actions.name"="API example"
+LABEL "com.github.actions.description"="Make a call to GitHub's API"
+LABEL "com.github.actions.icon"="mic"
+LABEL "com.github.actions.color"="purple"
+
+LABEL "repository"="http://github.com/staceb/actions_api_example"
+LABEL "homepage"="http://github.com/actions"
+LABEL "maintainer"="Octocat <octocat@github.com>"
+
+# install git
+RUN apt-get -y install curl
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
